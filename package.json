@@ -1,0 +1,25 @@
+{
+  "name": "JournalApp",
+  "version": "1.0.0",
+  "description": "Journal Application",
+  "main": "app.js",
+  "dependencies": {
+    "node.js": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "test": "npm nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/this-is-matt/JournalAppTeamAssignment.git"
+  },
+  "author": "Matt Palmer, Adam Dutson, Dallin Suggs, Sierra Porter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/this-is-matt/JournalAppTeamAssignment/issues"
+  },
+  "homepage": "https://github.com/this-is-matt/JournalAppTeamAssignment#readme"
+}
