@@ -1,5 +1,3 @@
-const { response } = require('express');
-
 const routes = require('express').Router();
 
 routes

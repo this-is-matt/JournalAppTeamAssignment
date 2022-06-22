@@ -40,6 +40,4 @@ app
 
 
 //set the port and return the port number
-app.listen(port, () => {
-    console.log(`App listening on ${port}`)
-})
+app.listen(port, () => console.log(`App listening on ${port}`))
