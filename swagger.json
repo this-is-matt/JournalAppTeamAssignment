@@ -1,14 +1,840 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts",
-    "description": "Contacts API",
+    "title": "Journals API",
+    "description": "This API lets users search and update the Users, Journals, Themes, and Profiles databases.",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
-  "paths": {}
+  "paths": {
+    "/users/": {
+      "get": {
+        "tags": [ "Users" ],
+        "summary": "Get all the Users",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Users" ],
+        "summary": "Create a new User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new user using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "userName": {
+                  "type": "string",
+                  "example": "NewUser"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "fName",
+                "lName",
+                "email",
+                "userName",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{_id}": {
+      "get": {
+        "tags": [ "Users" ],
+        "summary": "Get a specific User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific user with the username",
+            "example": "SuperUser",
+            "value": "SuperUser"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [ "Users" ],
+        "summary": "Update a User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific user with the username and change contents with request body",
+            "example": "SuperUser",
+            "value": "SuperUser"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update a user using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "userName": {
+                  "type": "string",
+                  "example": "SuperUser"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "fName",
+                "lName",
+                "email",
+                "userName",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Users" ],
+        "summary": "Delete a User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific user by username and delete it from the database.",
+            "example": "SuperUser",
+            "value": "SuperUser"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/journals/": {
+      "get": {
+        "tags": [ "Journals" ],
+        "summary": "Get all the Journal entries",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Journals" ],
+        "summary": "Create a new Journal entry",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new journal entrie using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "_id"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/journals/{_id}": {
+      "get": {
+        "tags": [ "Journals" ],
+        "summary": "Get a specific journal entry",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific journal entry with the journal id",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [ "Journals" ],
+        "summary": "Update a Journal entry",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific journal entry with the journal _id and change contents with request body",
+            "example": "{_id}",
+            "value": "{_id}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update a journal entry using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "_id"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Journals" ],
+        "summary": "Delete a journal entry",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific journal entry by _id and delete it from the database.",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/themes/": {
+      "get": {
+        "tags": [ "Themes" ],
+        "summary": "Get all the Themes",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Themes" ],
+        "summary": "Create a new Theme",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new theme using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "{_id}"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/themes/{_id}": {
+      "get": {
+        "tags": [ "Themes" ],
+        "summary": "Get a specific Theme",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific theme with the theme _id",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [ "Themes" ],
+        "summary": "Update a Theme",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific theme with the theme _id and change contents with request body",
+            "example": "{_id}",
+            "value": "{_id}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update a theme using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "{_id}"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Themes" ],
+        "summary": "Delete a Theme",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific theme by theme _id and delete it from the database.",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/profiles/": {
+      "get": {
+        "tags": [ "Profiles" ],
+        "summary": "Get all the profiles",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Profiles" ],
+        "summary": "Create a new Profile",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new profile using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "{_id}"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/profiles/{_id}": {
+      "get": {
+        "tags": [ "Profiles" ],
+        "summary": "Get a specific Profile",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific user with the profile _id",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [ "Profiles" ],
+        "summary": "Update a profile",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific profile with the profile _id and change contents with request body",
+            "example": "{_id}",
+            "value": "{_id}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update a profile using request body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "{_id}"
+                },
+                "fName": {
+                  "type": "string",
+                  "example": "Jon"
+                },
+                "lName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "P@ssword1"
+                }
+              },
+              "required": [
+                "_id",
+                "fName",
+                "lName",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Profiles" ],
+        "summary": "Delete a profile",
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Get a specific profile by profile _id and delete it from the database.",
+            "example": "{_id}",
+            "value": "{_id}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
 }
