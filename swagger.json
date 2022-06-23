@@ -5,7 +5,7 @@
     "description": "This API lets users search and update the Users, Journals, Themes, and Profiles databases.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "journalteam-cse341.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http",
