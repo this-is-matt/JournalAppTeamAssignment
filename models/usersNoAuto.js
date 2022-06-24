@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema(
+const UsersAutoSchema = new mongoose.Schema(
     {
+        _id: false,
         googleId: {
             type: String,
             unique: true,
@@ -32,4 +33,4 @@ const UserSchema = new mongoose.Schema(
     { versionKey: false }
 );
 
-module.exports = mongoose.model('Users', UserSchema, 'Users');
+module.exports = mongoose.model('UsersNoAuto', UsersAutoSchema, 'Users');

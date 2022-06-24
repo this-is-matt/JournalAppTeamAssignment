@@ -15,10 +15,10 @@ const initDB = () => {
         if (err) console.log(createError(500, "Can't connect to the database"));
         console.log('Connected to the database');
         _client = client;
-        _usersCollection = _client.db.collection('users');
-        _entriesCollection = _client.db.collection('entries');
-        _profileCollection = _client.db.collection('profile');
-        _themesCollection = _client.db.collection('themes');
+        _usersCollection = _client.db.collection('Users');
+        _entriesCollection = _client.db.collection('Entries');
+        _profileCollection = _client.db.collection('Profile');
+        _themesCollection = _client.db.collection('Themes');
     });
 };
 

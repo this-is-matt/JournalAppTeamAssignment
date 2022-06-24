@@ -5,7 +5,7 @@
     "description": "This API lets users search and update the Users, Journals, Themes, and Profiles databases.",
     "version": "1.0.0"
   },
-  "host": "journalteam-cse341.herokuapp.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http",
@@ -45,33 +45,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fName": {
+                "googleId": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "101632433458116691444"
                 },
-                "lName": {
+                "displayName": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Adam Dutson"
                 },
-                "email": {
+                "firstName": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "Adam"
                 },
-                "userName": {
+                "lastName": {
                   "type": "string",
-                  "example": "NewUser"
+                  "example": "Dutson"
                 },
-                "password": {
+                "image": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
                 }
               },
               "required": [
-                "fName",
-                "lName",
-                "email",
-                "userName",
-                "password"
+                "googleId",
+                "displayName",
+                "firstName",
+                "lastName",
+                "image"
               ]
             }
           }
@@ -99,12 +99,12 @@
         "description": "",
         "parameters": [
           {
-            "name": "username",
+            "name": "_id",
             "in": "path",
             "required": true,
             "description": "Get a specific user with the username",
-            "example": "SuperUser",
-            "value": "SuperUser"
+            "example": "62ae1f55aae4130b9a99d8eb",
+            "value": "62ae1f55aae4130b9a99d8eb"
           }
         ],
         "responses": {
@@ -128,12 +128,12 @@
         "description": "",
         "parameters": [
           {
-            "name": "username",
+            "name": "_id",
             "in": "path",
             "required": true,
-            "description": "Get a specific user with the username and change contents with request body",
-            "example": "SuperUser",
-            "value": "SuperUser"
+            "description": "Get a specific user with the user id and change contents with request body",
+            "example": "62ae1f55aae4130b9a99d8eb",
+            "value": "62ae1f55aae4130b9a99d8eb"
           },
           {
             "name": "body",
@@ -142,33 +142,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fName": {
+                "googleId": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "101632433458116691444"
                 },
-                "lName": {
+                "displayName": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Adam Dutson"
                 },
-                "email": {
+                "firstName": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "Adam"
                 },
-                "userName": {
+                "lastName": {
                   "type": "string",
-                  "example": "SuperUser"
+                  "example": "Dutson"
                 },
-                "password": {
+                "image": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
                 }
               },
               "required": [
-                "fName",
-                "lName",
-                "email",
-                "userName",
-                "password"
+                "googleId",
+                "displayName",
+                "firstName",
+                "lastName",
+                "image"
               ]
             }
           }
@@ -194,12 +194,12 @@
         "description": "",
         "parameters": [
           {
-            "name": "username",
+            "name": "_id",
             "in": "path",
             "required": true,
-            "description": "Get a specific user by username and delete it from the database.",
-            "example": "SuperUser",
-            "value": "SuperUser"
+            "description": "Get a specific user by User Id and delete it from the database.",
+            "example": "62ae1f55aae4130b9a99d8eb",
+            "value": "62ae1f55aae4130b9a99d8eb"
           }
         ],
         "responses": {
