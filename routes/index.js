@@ -10,7 +10,7 @@ routes
     .use('/entries', require('./entries'))
     .use('/profile', require('./profile'))
     .use('/themes', require('./themes'))
-    .use('/user', require('./user'));
+    .use('/users', require('./users'));
     
 
 module.exports = routes;
