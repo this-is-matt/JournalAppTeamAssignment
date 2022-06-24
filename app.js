@@ -17,10 +17,14 @@ require('dotenv/config');
 const swaggerUI = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
+//set connect for use of initDB function from ./dbConnect/dbConnection.js
+const connect = require('./dbConnect/dbConnection.js');
+connect.initDB();
 
-mongoose.connect(process.env.MONGODB_URI, 
-() => console.log("connected to DB"), 
-e => console.error(e));
+
+// mongoose.connect(process.env.MONGODB_URI, 
+// () => console.log("connected to DB"), 
+// e => console.error(e));
 
 
 app
