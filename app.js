@@ -21,12 +21,7 @@ const swaggerDocument = require('./swagger.json');
 const connect = require('./dbConnect/dbConnection.js');
 connect.initDB();
 
-
-// mongoose.connect(process.env.MONGODB_URI, 
-// () => console.log("connected to DB"), 
-// e => console.error(e));
-
-
+//set Server routing/headers
 app
 .use(bodyParser.json())
 .use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
