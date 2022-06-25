@@ -218,9 +218,9 @@
         }
       }
     },
-    "/journals/": {
+    "/entries/": {
       "get": {
-        "tags": [ "Journals" ],
+        "tags": [ "Entries" ],
         "summary": "Get all the Journal entries",
         "description": "",
         "parameters": [],
@@ -240,44 +240,29 @@
         }
       },
       "post": {
-        "tags": [ "Journals" ],
+        "tags": [ "Entries" ],
         "summary": "Create a new Journal entry",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "description": "Add a new journal entrie using request body",
+            "description": "Add a new journal entry using request body",
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "title": {
                   "type": "string",
-                  "example": "_id"
+                  "example": "Entry Title"
                 },
-                "fName": {
+                "entry": {
                   "type": "string",
-                  "example": "Jon"
-                },
-                "lName": {
-                  "type": "string",
-                  "example": "Doe"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "test@email.com"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "P@ssword1"
+                  "example": "Some text entered for entry."
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "title",
+                "entry"
               ]
             }
           }
@@ -298,9 +283,9 @@
         }
       }
     },
-    "/journals/{_id}": {
+    "/entries/{_id}": {
       "get": {
-        "tags": [ "Journals" ],
+        "tags": [ "Entries" ],
         "summary": "Get a specific journal entry",
         "description": "",
         "parameters": [
@@ -308,9 +293,9 @@
             "name": "_id",
             "in": "path",
             "required": true,
-            "description": "Get a specific journal entry with the journal id",
-            "example": "{_id}",
-            "value": "{_id}"
+            "description": "Get a specific journal entry with the entries id",
+            "example": "62b66cf020fba432c016e9cb",
+            "value": "62b66cf020fba432c016e9cb"
           }
         ],
         "responses": {
@@ -329,7 +314,7 @@
         }
       },
       "put": {
-        "tags": [ "Journals" ],
+        "tags": [ "Entries" ],
         "summary": "Update a Journal entry",
         "description": "",
         "parameters": [
@@ -337,9 +322,9 @@
             "name": "_id",
             "in": "path",
             "required": true,
-            "description": "Get a specific journal entry with the journal _id and change contents with request body",
-            "example": "{_id}",
-            "value": "{_id}"
+            "description": "Get a specific journal entry with the entries _id and change contents with request body",
+            "example": "62b66cf020fba432c016e9cb",
+            "value": "62b66cf020fba432c016e9cb"
           },
           {
             "name": "body",
@@ -348,33 +333,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "title": {
                   "type": "string",
-                  "example": "_id"
+                  "example": "Entry Title"
                 },
-                "fName": {
+                "entry": {
                   "type": "string",
-                  "example": "Jon"
-                },
-                "lName": {
-                  "type": "string",
-                  "example": "Doe"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "test@email.com"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "P@ssword1"
+                  "example": "Some text entered for entry."
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "title",
+                "entry"
               ]
             }
           }
@@ -395,7 +365,7 @@
         }
       },
       "delete": {
-        "tags": [ "Journals" ],
+        "tags": [ "Entries" ],
         "summary": "Delete a journal entry",
         "description": "",
         "parameters": [
@@ -403,9 +373,9 @@
             "name": "_id",
             "in": "path",
             "required": true,
-            "description": "Get a specific journal entry by _id and delete it from the database.",
-            "example": "{_id}",
-            "value": "{_id}"
+            "description": "Get a specific journal entry by entries _id and delete it from the database.",
+            "example": "62b66cef20fba432c016e9c9",
+            "value": "62b66cef20fba432c016e9c9"
           }
         ],
         "responses": {
@@ -457,33 +427,43 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "title": {
                   "type": "string",
-                  "example": "{_id}"
+                  "example": "Green Lantern"
                 },
-                "fName": {
+                "creatorUsername": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "Hal Jordan"
                 },
-                "lName": {
+                "mainColor": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Green"
                 },
-                "email": {
+                "secondaryColor": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "Black"
                 },
-                "password": {
+                "backgroundImage": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
+                },
+                "searchTags": {
+                  "type": "string",
+                  "example": "green, lantern"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "This is a Green Lantern theme"
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "title",
+                "creatorUsername",
+                "mainColor",
+                "secondaryColor",
+                "backgroundImage",
+                "searchTags",
+                "description"
               ]
             }
           }
@@ -515,8 +495,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific theme with the theme _id",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66bb057af867560bdfe6e",
+            "value": "62b66bb057af867560bdfe6e"
           }
         ],
         "responses": {
@@ -544,8 +524,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific theme with the theme _id and change contents with request body",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66bb057af867560bdfe6e",
+            "value": "62b66bb057af867560bdfe6e"
           },
           {
             "name": "body",
@@ -554,33 +534,43 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "title": {
                   "type": "string",
-                  "example": "{_id}"
+                  "example": "Green Lantern"
                 },
-                "fName": {
+                "creatorUsername": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "Hal Jordan"
                 },
-                "lName": {
+                "mainColor": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Green"
                 },
-                "email": {
+                "secondaryColor": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "Black"
                 },
-                "password": {
+                "backgroundImage": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
+                },
+                "searchTags": {
+                  "type": "string",
+                  "example": "green, lantern"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "This is a Green Lantern theme"
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "title",
+                "creatorUsername",
+                "mainColor",
+                "secondaryColor",
+                "backgroundImage",
+                "searchTags",
+                "description"
               ]
             }
           }
@@ -610,8 +600,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific theme by theme _id and delete it from the database.",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66baf57af867560bdfe6c",
+            "value": "62b66baf57af867560bdfe6c"
           }
         ],
         "responses": {
@@ -630,7 +620,7 @@
         }
       }
     },
-    "/profiles/": {
+    "/profile/": {
       "get": {
         "tags": [ "Profiles" ],
         "summary": "Get all the profiles",
@@ -663,33 +653,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "profileName": {
                   "type": "string",
-                  "example": "{_id}"
+                  "example": "Wonder Woman"
                 },
-                "fName": {
+                "mood": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "compassionate"
                 },
-                "lName": {
+                "interests": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Peace and Harmony"
                 },
-                "email": {
+                "introduction": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "I am an ambassador for peace. I left Paradise Island for this reason. My people left war behind long ago."
                 },
-                "password": {
+                "profileImageUrl": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "profileName",
+                "mood",
+                "interests",
+                "introduction",
+                "profileImageUrl"
               ]
             }
           }
@@ -710,7 +700,7 @@
         }
       }
     },
-    "/profiles/{_id}": {
+    "/profile/{_id}": {
       "get": {
         "tags": [ "Profiles" ],
         "summary": "Get a specific Profile",
@@ -721,8 +711,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific user with the profile _id",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66a2f73610dda392fa288",
+            "value": "62b66a2f73610dda392fa288"
           }
         ],
         "responses": {
@@ -750,8 +740,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific profile with the profile _id and change contents with request body",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66a2f73610dda392fa288",
+            "value": "62b66a2f73610dda392fa288"
           },
           {
             "name": "body",
@@ -760,33 +750,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "profileName": {
                   "type": "string",
-                  "example": "{_id}"
+                  "example": "Wonder Woman"
                 },
-                "fName": {
+                "mood": {
                   "type": "string",
-                  "example": "Jon"
+                  "example": "compassionate"
                 },
-                "lName": {
+                "interests": {
                   "type": "string",
-                  "example": "Doe"
+                  "example": "Peace and Harmony"
                 },
-                "email": {
+                "introduction": {
                   "type": "string",
-                  "example": "test@email.com"
+                  "example": "I am an ambassador for peace. I left Paradise Island for this reason. My people left war behind long ago."
                 },
-                "password": {
+                "profileImageUrl": {
                   "type": "string",
-                  "example": "P@ssword1"
+                  "example": "https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c"
                 }
               },
               "required": [
-                "_id",
-                "fName",
-                "lName",
-                "email",
-                "password"
+                "profileName",
+                "mood",
+                "interests",
+                "introduction",
+                "profileImageUrl"
               ]
             }
           }
@@ -816,8 +806,8 @@
             "in": "path",
             "required": true,
             "description": "Get a specific profile by profile _id and delete it from the database.",
-            "example": "{_id}",
-            "value": "{_id}"
+            "example": "62b66a2f73610dda392fa288",
+            "value": "62b66a2f73610dda392fa288"
           }
         ],
         "responses": {

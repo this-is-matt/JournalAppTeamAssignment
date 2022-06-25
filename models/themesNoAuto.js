@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-const themesSchema = new mongoose.Schema(
+const themesNoAutoSchema = new mongoose.Schema(
     {
+        _id: false,
         title: {
             type: String,
             required: true
         },
-        creatorUsername: {
+        creationUsername: {
             type: String,
             required: true
         },
@@ -38,4 +39,4 @@ const themesSchema = new mongoose.Schema(
     { versionKey: false }
 );
 
-module.exports = mongoose.model('Themes', themesSchema, 'Themes');
+module.exports = mongoose.model('ThemesNoAuto', themesNoAutoSchema, 'Themes');

@@ -1,32 +1,25 @@
 const mongoose = require('mongoose');
 
-const themesSchema = new mongoose.Schema(
+const profileNoAutoSchema = new mongoose.Schema(
     {
-        title: {
+        _id: false,
+        profileName: {
             type: String,
             required: true
         },
-        creatorUsername: {
+        mood: {
             type: String,
             required: true
         },
-        mainColor: {
+        interests: {
             type: String,
             required: true
         },
-        secondaryColor: {
+        introduction: {
             type: String,
             required: true
         },
-        backgroundImage: {
-            type: String,
-            required: true
-        },
-        searchTags: {
-            type: String,
-            required: true
-        },
-        description: {
+        profileImageUrl: {
             type: String,
             required: true
         },
@@ -38,4 +31,4 @@ const themesSchema = new mongoose.Schema(
     { versionKey: false }
 );
 
-module.exports = mongoose.model('Themes', themesSchema, 'Themes');
+module.exports = mongoose.model('ProfileNoAuto', profileNoAutoSchema, 'Profile');
