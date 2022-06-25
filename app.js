@@ -26,16 +26,17 @@ app
 .use(bodyParser.json())
 .use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 .use('/', require('./routes'))
-.use((req,res, next) => {
-    res.setHeader('Access-Controll-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Controll-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-});
+.use(cors())
+// .use((req,res, next) => {
+//     res.setHeader('Access-Controll-Allow-Origin', '*');
+//     res.setHeader(
+//         'Access-Controll-Allow-Headers',
+//         'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
+//     );
+//     res.setHeader('Content-Type', 'application/json');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     next();
+// });
 
 
 //set the port and return the port number

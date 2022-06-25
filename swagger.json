@@ -8,8 +8,7 @@
   "host": "https://journalteam-cse341.herokuapp.com/",
   "basePath": "/",
   "schemes": [
-    "https",
-    "http"
+    "https"
   ],
   "paths": {
     "/users/": {
