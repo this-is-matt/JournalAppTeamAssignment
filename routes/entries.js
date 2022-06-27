@@ -4,6 +4,9 @@ const { entriesValidation } = require('../validation');
 const { validationResult } = require('express-validator');
 const { ensureAuthEnd } = require('../middleware/auth');
 
+
+// Request routes
+// @route GET /entries
 routes.get('/', entriesControl.getEntries);
 routes.get('/:id', entriesControl.getEntry);
 routes.post('/', entriesValidation, (req, res) => {

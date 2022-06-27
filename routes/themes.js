@@ -4,6 +4,9 @@ const { themesValidation } = require('../validation');
 const { validationResult } = require('express-validator');
 const { ensureAuthEnd } = require('../middleware/auth');
 
+
+// Request routes
+// @route GET /themes
 routes.get('/', themesControl.getThemes);
 routes.get('/:id', themesControl.getTheme);
 routes.post('/', themesValidation, (req, res) => {

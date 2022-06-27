@@ -4,6 +4,9 @@ const { profileValidation } = require('../validation');
 const { validationResult } = require('express-validator');
 const { ensureAuthEnd } = require('../middleware/auth');
 
+
+// Request routes
+// @route GET /profile
 routes.get('/', profileControl.getProfiles);
 routes.get('/:id', profileControl.getProfile);
 routes.post('/', profileValidation, (req, res) => {

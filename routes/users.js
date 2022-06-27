@@ -4,6 +4,9 @@ const { usersValidation } = require('../validation');
 const { validationResult } = require('express-validator');
 const { ensureAuthEnd } = require('../middleware/auth');
 
+
+// Request routes
+// @route GET /users
 routes.get('/', usersControl.getUsers);
 routes.get('/:id', usersControl.getUser);
 routes.post('/', usersValidation, (req, res) => {
