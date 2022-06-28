@@ -2,12 +2,14 @@ const routes = require('express').Router();
 const usersControl = require('../controllers/users');
 const { usersValidation } = require('../validation');
 const { validationResult } = require('express-validator');
-const { ensureAuthEnd } = require('../middleware/auth');
+const { ensureAuth2 } = require('../middleware/auth');
+
+
 
 
 // Request routes
 // @route GET /users
-routes.get('/', usersControl.getUsers);
+routes.get('/', ensureAuth2, usersControl.getUsers);
 routes.get('/:id', usersControl.getUser);
 routes.post('/', usersValidation, (req, res) => {
     const errors = validationResult(req);
