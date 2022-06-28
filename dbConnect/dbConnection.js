@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 let createError = require('http-errors');
-require('dotenv/config');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 let _client;
 let _usersCollection;

@@ -6,9 +6,38 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const cors =require('cors');
 
+//Imports for oAuth
+
+const exphbs = require('express-handlebars')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
+
 // setup express
 const express = require('express');
+
+//Passport config
+require('./passport')(passport);
+
 const app = express();
+
+//Handlbars
+app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', '.hbs')
+
+//Sessions
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI
+  })
+}))
+
+//Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // setup dotenv
 require('dotenv/config');
