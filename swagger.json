@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Journals API",
-    "description": "This API lets users search and update the Users, Journals, Themes, and Profiles databases.",
+    "description": "This API lets users search and update the Users, Journals, Themes, and Profiles databases. <br><p>Bucketlist API Documentation</p><a href='https://cse341-project2-suggs.herokuapp.com/auth/logout'>Log Out</a><br><a href='https://cse341-project2-suggs.herokuapp.com/'>Login Page</a>",
     "version": "1.0.0"
   },
   "host": "journalteam-cse341.herokuapp.com",

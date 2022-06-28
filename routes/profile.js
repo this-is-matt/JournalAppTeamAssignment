@@ -2,28 +2,28 @@ const routes = require('express').Router();
 const profileControl = require('../controllers/profile');
 const { profileValidation } = require('../validation');
 const { validationResult } = require('express-validator');
-const { ensureAuthEnd } = require('../middleware/auth');
+const { ensureAuth2 } = require('../middleware/auth');
 
 
 // Request routes
 // @route GET /profile
-routes.get('/', profileControl.getProfiles);
-routes.get('/:id', profileControl.getProfile);
-routes.post('/', profileValidation, (req, res) => {
+routes.get('/', ensureAuth2, profileControl.getProfiles);
+routes.get('/:id', ensureAuth2, profileControl.getProfile);
+routes.post('/', ensureAuth2, profileValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     profileControl.createProfile(req, res);
 });
-routes.put('/:id', profileValidation, (req, res) => {
+routes.put('/:id', ensureAuth2, profileValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     profileControl.updateProfile(req, res);
 })
-routes.delete('/:id', profileControl.deleteProfile);
+routes.delete('/:id', ensureAuth2, profileControl.deleteProfile);
 
 
 module.exports = routes;

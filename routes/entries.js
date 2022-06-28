@@ -2,27 +2,27 @@ const routes = require('express').Router();
 const entriesControl = require('../controllers/entries');
 const { entriesValidation } = require('../validation');
 const { validationResult } = require('express-validator');
-const { ensureAuthEnd } = require('../middleware/auth');
+const { ensureAuth2 } = require('../middleware/auth');
 
 
 // Request routes
 // @route GET /entries
-routes.get('/', entriesControl.getEntries);
-routes.get('/:id', entriesControl.getEntry);
-routes.post('/', entriesValidation, (req, res) => {
+routes.get('/', ensureAuth2, entriesControl.getEntries);
+routes.get('/:id', ensureAuth2, entriesControl.getEntry);
+routes.post('/', ensureAuth2, entriesValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     entriesControl.createEntry(req, res);
 });
-routes.put('/:id', entriesValidation, (req, res) => {
+routes.put('/:id', ensureAuth2, entriesValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     entriesControl.updateEntry(req, res);
 })
-routes.delete('/:id', entriesControl.deleteEntry);
+routes.delete('/:id', ensureAuth2, entriesControl.deleteEntry);
 
 module.exports = routes;

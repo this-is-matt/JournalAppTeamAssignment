@@ -2,28 +2,28 @@ const routes = require('express').Router();
 const themesControl = require('../controllers/themes');
 const { themesValidation } = require('../validation');
 const { validationResult } = require('express-validator');
-const { ensureAuthEnd } = require('../middleware/auth');
+const { ensureAuth2 } = require('../middleware/auth');
 
 
 // Request routes
 // @route GET /themes
-routes.get('/', themesControl.getThemes);
-routes.get('/:id', themesControl.getTheme);
-routes.post('/', themesValidation, (req, res) => {
+routes.get('/', ensureAuth2, themesControl.getThemes);
+routes.get('/:id', ensureAuth2, themesControl.getTheme);
+routes.post('/', ensureAuth2, themesValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     themesControl.createTheme(req, res);
 });
-routes.put('/:id', themesValidation, (req, res) => {
+routes.put('/:id', ensureAuth2, themesValidation, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     themesControl.updateTheme(req, res);
 })
-routes.delete('/:id', themesControl.deleteTheme);
+routes.delete('/:id', ensureAuth2, themesControl.deleteTheme);
 
 
 module.exports = routes;
