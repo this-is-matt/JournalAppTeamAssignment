@@ -53,10 +53,18 @@ describe('requests', () => {
               text += possible.charAt(Math.floor(Math.random() * possible.length));
             return text;
         }
+        function makeDisplayName() {
+            let text = "";
+            const possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+            for (let i = 0; i < 10; i++)
+              text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }
         const newGoogleId = makeid();
+        const newDisplayName = makeDisplayName();
         const users = db.collection('Users');
         const id = new ObjectId();
-        const mockUser = {_id: id, googleId: newGoogleId, displayName: 'Testy Testerson', firstName: 'Te', lastName: 'St', image: 'https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c'};
+        const mockUser = {_id: id, googleId: newGoogleId, displayName: newDisplayName, firstName: 'Te', lastName: 'St', image: 'https://lh3.googleusercontent.com/a/AATXAJwccRK4PnVWIBXbbwwbjPrEipUl8VWUoRh8fiXn=s96-c'};
         await users.insertOne(mockUser);
         const insertedUser = await users.findOne({_id: id});
         expect(insertedUser).toEqual(mockUser);

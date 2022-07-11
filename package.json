@@ -4,7 +4,10 @@
   "description": "Journal Application",
   "main": "app.js",
   "jest": {
-    "preset": "@shelf/jest-mongodb"
+    "preset": "@shelf/jest-mongodb",
+    "testEnvironment": "node",
+    "verbose": true,
+    "forceExit": true
   },
   "dependencies": {
     "connect-mongo": "^4.6.0",
@@ -21,11 +24,14 @@
     "mongoose": "^6.4.1",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
+    "sinon": "^14.0.0",
     "swagger-autogen": "^2.21.2",
     "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^3.0.2",
+    "@types/jest": "^28.1.4",
+    "@types/supertest": "^2.0.12",
     "jest": "^28.1.2",
     "nodemon": "^1.3.3",
     "supertest": "^6.2.4"
