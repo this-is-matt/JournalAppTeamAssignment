@@ -2,6 +2,7 @@
 const supertest = require('supertest');
 const { app } = require('../utils/test_config.js');
 const auth = require('../middleware/auth.js');
+const mongoose = require('mongoose');
 
 describe('endpoints', () => {
     describe('test profile endpoint functions', () => {
@@ -12,11 +13,12 @@ describe('endpoints', () => {
             auth.ensureAuth2.callsFake((req, res, next) => next());
             
         });
-        afterAll(function() {
+        afterAll(async function() {
             // restore original method
             auth.ensureGuest.restore();
             auth.ensureAuth.restore();
             auth.ensureAuth2.restore();
+            await mongoose.disconnect();
         });
         it('Profile endpoint function getProfile() should return a 400', async () => {
             const profileId = '62b66cef20fba432c016e9';
