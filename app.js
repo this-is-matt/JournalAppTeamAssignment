@@ -1,5 +1,3 @@
-const express = require('express');
-//misc
 const port = process.env.PORT || 3000;
 
 const server = require('./utils/server.js');

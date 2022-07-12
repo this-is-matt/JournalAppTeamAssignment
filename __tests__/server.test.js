@@ -2,7 +2,7 @@ const {MongoClient} = require('mongodb');
 require('dotenv/config');
 const {ObjectId} = require('mongodb');
 
-describe('requests', () => {
+describe('server', () => {
     let connection;
     let db;
 
